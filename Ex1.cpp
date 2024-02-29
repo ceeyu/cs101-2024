@@ -1,13 +1,13 @@
  #include <stdio.h>
 
 void print_sp(int i, int n){
-    for (int sp = 0; sp < n; sp++){
+    for (int sp = 0; sp < n-i; sp++){
         printf(" ");
     }
 }
 
 void print_num(int n){
-    for (int i = 0; i < n;i++){
+    for (int i = 0; i < 2*n-1;i++){
         printf("%d", n);
     }
     printf("\n");
