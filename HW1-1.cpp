@@ -32,6 +32,7 @@ int main() {
 
     printf("Input: %s\n", input);
     printf("Output: %s\n", output);
+    printf("\n");
 
     return 0;
 }
