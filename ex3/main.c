@@ -71,7 +71,7 @@ int main(){
     emp[2].salary = 90000.0;
     strcpy(emp[0].name,"swift");
 
-    int age = emp_aveage_age(emp, 3);
+    int age = emp_average_age(emp, 3);
     printf("Average age: %d\n\n", age);
 
     emp_writefile(emp,3);
