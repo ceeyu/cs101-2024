@@ -78,7 +78,7 @@ void print_last(int num_row, FILE* fp, int id_numx) {
             
         }
     }
-    fprintf(fp, "======== csie@CGU =========\n");
+    fprintf(fp, "========= csie@CGU =========\n");
 }
 
 
