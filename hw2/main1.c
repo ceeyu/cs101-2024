@@ -85,7 +85,7 @@ int print_last(int num_row, FILE* fp, int id_numx) {
     for (int i = num_row + 1; i < 6; i++) {
         fprintf(fp, "[%d]: ", i);
         for (int j = 0; j < 7; j++) {
-            fprintf(fp, "-- ");
+            fprintf(fp, "__ ");
             j == 6 ? fprintf(fp, "\n") : 1;
         }
     }
@@ -102,42 +102,40 @@ void frecord(int sell_num, int id_numx, int row_num) {
     record.emp_id = id_numx;
     strftime(record.lotto_date, 100, "%Y%m%d", localtime(&curtime));
     strftime(record.lotto_time, 100, "%H:%M:%S", localtime(&curtime));
-    // femp = fopen("records.bin", "ab");
-    // fwrite(&record, sizeof(record), 1, femp);
-    // fclose(femp);
+    femp = fopen("records.bin", "ab");
+    fwrite(&record, sizeof(record), 1, femp);
+    fclose(femp);
 }
 
 int main() {
-     FILE* fp;
-    // FILE* fr;
+    FILE* fp;
+    FILE* fr;
     int sell_num[1] = { 1 }, sell_numpluse[1] = { 1 }, row_num = 0, id_numx;
     //id_numx = save_idfile();
-    printf("歡迎光臨長庚樂透彩購買機台");
-    printf("\n請問要買幾組樂透彩： ");
+    //printf("\nplease enter your lotto row num: ");
     scanf("%d", &row_num);
-    printf("以為您購買 3 組樂透組合輸出至lotto.txt");
-    // if ((fr = fopen("a.bin", "r")) == NULL) {
-    //     fr = fopen("a.bin", "wb");
-    //     fwrite(sell_num, sizeof(int), 1, fr);
-    // }
-    // else {
-    //     fr = fopen("a.bin", "rb");
-    //     fread(sell_num, sizeof(int), 1, fr);
-    //     fseek(fr, 0, SEEK_SET);
-    //     fclose(fr);
-    //     fr = fopen("a.bin", "wb+");
-    //     sell_numpluse[0] = sell_num[0] + 1;
-    //     fwrite(sell_numpluse, sizeof(int), 1, fr);
-    // }
+    if ((fr = fopen("a.bin", "r")) == NULL) {
+        fr = fopen("a.bin", "wb");
+        fwrite(sell_num, sizeof(int), 1, fr);
+    }
+    else {
+        fr = fopen("a.bin", "rb");
+        fread(sell_num, sizeof(int), 1, fr);
+        fseek(fr, 0, SEEK_SET);
+        fclose(fr);
+        fr = fopen("a.bin", "wb+");
+        sell_numpluse[0] = sell_num[0] + 1;
+        fwrite(sell_numpluse, sizeof(int), 1, fr);
+    }
     int n = snprintf(NULL, 0, "lotto[%05d].txt", sell_numpluse[0]);
     char s1[n + 1];
     snprintf(s1, sizeof(s1), "lotto[%05d].txt", sell_numpluse[0]);
-     fp = fopen(s1, "w+");
-    // fclose(fr);
+    fp = fopen(s1, "w+");
+    fclose(fr);
     time_t curtime;
     time(&curtime);
     fprintf(fp, "========= lotto649 =========\n");
-    fprintf(fp, "= %.24s=\n", ctime(&curtime));
+    //fprintf(fp, "= %.24s=\n", ctime(&curtime));
     if (row_num <= 5) {
         for (int i = 1; i <= row_num; i++) {
             int lotto_array[8] = { 0 };
