@@ -14,18 +14,18 @@ int rand_num_mod70() {
     return rand() % 70;
 }
 
-int rand_num_mod11() {
-    return rand() % 11;
-}
+// int rand_num_mod11() {
+//     return rand() % 11;
+// }
 
 void get_rad_num(int lotto_array[7]) {
     for (int j = 0; j < 7; j++) {
-        if (j < 6) {
+        //if (j < 6) {
             lotto_array[j] = rand_num_mod70();
-        }
-        else {
-            lotto_array[6] = rand_num_mod11();
-        }
+        //}
+        // else {
+        //     lotto_array[6] = rand_num_mod11();
+        // }
         // Check that lotto_array[j] isn't 0
         if (lotto_array[j] == 0) {
             lotto_array[j] = rand_num_mod70();
@@ -67,8 +67,15 @@ void print_last(int num_row, FILE* fp, int id_numx) {
     for (int i = num_row + 1; i < 6; i++) {
         fprintf(fp, "[%d]: ", i);
         for (int j = 0; j < 7; j++) {
-            fprintf(fp, "__ ");
-            j == 6 ? fprintf(fp, "\n") : 1;
+            fprintf(fp, "__");
+            if(j != 6){
+                fprintf(fp," ");
+            }
+            else
+            {
+                fprintf(fp, "\n");
+            }
+            
         }
     }
     fprintf(fp, "======== csie@CGU =========\n");
@@ -96,9 +103,9 @@ int main() {
         fwrite(sell_numplus, sizeof(int), 1, fr);
     }
   	srand(1);
-    int n = snprintf(NULL, 0, "lotto[%05d].txt", sell_numplus[0]);
+    int n = snprintf(NULL, 0, "lotto.txt");
     char s1[n + 1];
-    snprintf(s1, sizeof(s1), "lotto[%05d].txt", sell_numplus[0]);
+    snprintf(s1, sizeof(s1), "lotto.txt");
     fp = fopen(s1, "w+");
     fclose(fr);
     time_t curtime;
