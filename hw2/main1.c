@@ -11,7 +11,7 @@ typedef struct lotto_record_t {
 } lotto_record_t;
 
 int rand_num_mod70() {
-    return rand() % 70;
+    return rand() % 69+1;
 }
 
 // int rand_num_mod11() {
