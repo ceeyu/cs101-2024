@@ -15,9 +15,8 @@ int main() {
   printf("Enter any string: ");
   scanf("%s", str);
 
-  printf("\nString before replacing: \n%s\n", str);
+  printf("\nString before replacing: \n%s", str);
   replace_all(str, oldChar, newChar);
-  printf("\nString after replacing %c with %c :\n%s",oldChar,newChar,str);
- 
+  printf("\n\nString after replacing %c with %c : \n%s",oldChar,newChar,str);
   return 0;
 }
