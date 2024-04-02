@@ -157,6 +157,7 @@ int main() {
             printf("%d ",lotto_numbers[i]);
         }
         printf("\n");
+        
     }
     
     
