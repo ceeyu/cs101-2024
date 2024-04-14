@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-typedef struct my_mm {
+typedef struct {
     int* calloced_p[10]; // 用來記錄分配的記憶體指標
 } my_mm_t;
 
@@ -61,6 +61,6 @@ int main() {
     my_free(np1);
     my_free(np4);
     int* np5 = my_calloc(1, 5);
-    int* np6 = my_calloc(1, 3);
+    int* np6 = my_calloc(1, 1);
     return 0;
 }
